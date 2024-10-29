@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 29/10/2024 - Diana Camila Ayala</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background-image: url('tecnoBack.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        header {
+            background-color: #3A9BD4;
+            padding: 10px;
+            text-align: center;
+            flex: 0 0 60px; /* Altura fija para el header */
+            width: 100%; /* Asegúrate que el header ocupa todo el ancho */
+            position: fixed; /* Fija el header en la parte superior */
+            top: 0; /* Posición en la parte superior */
+            z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+        }
+
+        nav {
+            background-color: #222;
+            width: 250px; /* Ancho fijo para el menú */
+            padding-top: 70px; /* Espacio debajo del header */
+            transition: width 0.3s;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #444;
+        }
+
+        nav ul li ul {
+            display: none;
+            position: absolute;
+            left: 100%; /* Menú desplegable hacia la derecha */
+            top: 0;
+            background-color: #333;
+            z-index: 1;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 20px;
+            padding-top: 80px; /* Espacio para el header */
+            overflow: hidden;
+        }
+
+        .top {
+            flex: 1;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .middle {
+            display: flex;
+            flex: 1;
+        }
+
+        .left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #ccc;
+            overflow: hidden;
+        }
+
+        .right {
+            flex: 2;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        form {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 350px;
+            margin: auto;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: black;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Examen 29/10/2024 - Diana Camila Ayala</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="#" onclick="document.getElementById('main-content').scrollIntoView();">Inicio</a>
+            </li>
+            <li>
+                <a href="#">Categorías</a>
+                <ul>
+                    <li><a href="https://dianacamilaayala.github.io/TheCoffeeCore/">Página Interna</a></li>
+                    <li><a href="https://investigacion.unitropico.edu.co/buscadores-gratuitos/" target="_blank">Página Externa</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="soporte.html" target="_blank">Soporte</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="content" id="main-content">
+        <div class="top">
+            <iframe src="https://investigacion.unitropico.edu.co/buscadores-gratuitos/" title="Página Externa" id="external-iframe"></iframe>
+        </div>
+
+        <div class="middle">
+            <div class="left">
+                <div class="internal-frame" style="flex: 1;">
+                    <iframe src="PaginaInterna.html" title="Página Interna" style="height: 100%;" id="internal-iframe"></iframe>
+                </div>
+            </div>
+
+            <div class="right">
+                <form action="mailto:drbyxes@gmail.com" method="post" enctype="text/plain">
+                    <h2>Formulario</h2>
+
+                    <label for="nombre">Nombre Completo:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ingresa el nombre completo" required>
+
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad" min="0" placeholder="Ingresa la edad" required>
+
+                    <label for="profesion">Profesión:</label>
+                    <input type="text" id="profesion" name="profesion" placeholder="Ingresa la profesión" required>
+
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe a la persona" required></textarea>
+
+                    <label for="foto">Sube una Foto:</label>
+                    <input type="file" id="foto" name="foto" accept="image/*" required>
+
+                    <input type="submit" value="Enviar">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadInternalPage() {
+            document.getElementById('internal-iframe').src = 'PaginaInterna.html';
+        }
+    </script>
+
+</body>
+</html>
